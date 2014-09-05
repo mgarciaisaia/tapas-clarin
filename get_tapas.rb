@@ -20,6 +20,7 @@ while(theDay <= today) do
   rescue => e
     if (e.to_s.include? "404")
       puts "ERROR - Not found #{filename} - #{e}"
+      File.delete filename if File.file? filename
       theDay = theDay.next
     else
       sleeping = (1..10).to_a.sample
